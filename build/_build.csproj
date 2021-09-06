@@ -59,10 +59,20 @@
   </ItemGroup>
 
   <ItemGroup>
+    <NpmTool Include="@azure/static-web-apps-cli" Version="0.7.1" Visible="false" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\source\Nuke.Components\Nuke.Components.csproj" />
     <ProjectReference Include="..\source\Nuke.CodeGeneration\Nuke.CodeGeneration.csproj" />
     <ProjectReference Include="..\source\Nuke.SourceGenerators\Nuke.SourceGenerators.csproj" ReferenceOutputAssembly="false" OutputItemType="Analyzer" />
     <ProjectReference Include="..\external\enterprise\src\Nuke.Enterprise\Nuke.Enterprise.csproj" Condition="'$(NukeEnterprise)' == 'True'" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="..\external\examples-keyvault\build\StaticWebApps.json">
+      <Link>Directory.Build\external\examples-keyvault\build\StaticWebApps.json</Link>
+    </Content>
   </ItemGroup>
 
   <Import Project="..\external\enterprise\src\Nuke.Enterprise\Nuke.Enterprise.props" Condition="'$(NukeEnterprise)' == 'True'" />

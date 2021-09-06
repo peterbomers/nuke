@@ -6,6 +6,7 @@
 
   <UsingTask TaskName="$(MSBuildThisFileName).CodeGenerationTask" AssemblyFile="$(NukeTasksAssembly)" />
   <UsingTask TaskName="$(MSBuildThisFileName).ExternalFilesTask" AssemblyFile="$(NukeTasksAssembly)" />
+  <UsingTask TaskName="$(MSBuildThisFileName).InstallNpmToolsTask" AssemblyFile="$(NukeTasksAssembly)" />
   <UsingTask TaskName="$(MSBuildThisFileName).PackPackageToolsTask" AssemblyFile="$(NukeTasksAssembly)" />
 
   <PropertyGroup>
@@ -44,6 +45,10 @@
       UseNestedNamespaces="$(NukeUseNestedNamespaces)"
       BaseNamespace="$(NukeBaseNamespace)"
       UpdateReferences="$(NukeUpdateReferences)"/>
+  </Target>
+
+  <Target Name="InstallNpmTools" BeforeTargets="CoreCompile" Condition="'@(NpmTool)' != ''">
+    <InstallNpmToolsTask NpmTools="@(NpmTool)"/>
   </Target>
 
 </Project>
